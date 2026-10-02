@@ -1,0 +1,1 @@
+class TrapezioModel { double altura; double baseMaior; double baseMenor; TrapezioModel({required this.altura, required this.baseMaior, required this.baseMenor}); }

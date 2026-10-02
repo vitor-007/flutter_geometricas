@@ -1,0 +1,1 @@
+class EsferaModel { double diametro; EsferaModel({required this.diametro}); }

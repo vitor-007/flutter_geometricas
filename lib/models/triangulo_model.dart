@@ -1,0 +1,1 @@
+class TrianguloModel { double altura; double base; double lado; TrianguloModel({required this.altura, required this.base, required this.lado}); }

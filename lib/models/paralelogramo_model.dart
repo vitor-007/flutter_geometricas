@@ -1,0 +1,1 @@
+class ParalelogramoModel { double base; double altura; ParalelogramoModel({required this.base, required this.altura}); }

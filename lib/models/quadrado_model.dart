@@ -1,0 +1,1 @@
+class QuadradoModel { double lado; QuadradoModel({required this.lado}); }
