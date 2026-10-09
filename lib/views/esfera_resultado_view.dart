@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../controllers/esfera_controller.dart';
-import '../constants/app_constants.dart';
+import 'widgets/geometria_resultado.dart';
 
 class EsferaResultadoView extends StatelessWidget {
   final EsferaController controller;
@@ -9,23 +10,20 @@ class EsferaResultadoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Resultados Finais")),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Diâmetro: ${formatDouble(controller.model.diametro)}", style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 10),
-            Text("Raio: ${formatDouble(controller.calcularRaio())}", style: const TextStyle(fontSize: 18)),
-            const Divider(height: 30, thickness: 2),
-            Text("Área:\n${formatDouble(controller.calcularArea())}", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 20),
-            Text("Volume:\n${formatDouble(controller.calcularVolume())}", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          ],
+    return GeometriaResultado(
+      figura: 'Esfera',
+      medidas: [
+        MedidaResultado('Diâmetro', controller.model.diametro),
+        MedidaResultado('Raio', controller.calcularRaio()),
+      ],
+      resultados: [
+        MedidaResultado(
+          'Área da superfície',
+          controller.calcularArea(),
+          unidade: 'u²',
         ),
-      ),
+        MedidaResultado('Volume', controller.calcularVolume(), unidade: 'u³'),
+      ],
     );
   }
 }

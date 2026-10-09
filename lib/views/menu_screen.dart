@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
+import 'login_screen.dart';
 import 'retangulo_entrada_view.dart';
-import 'circulo_entrada_view.dart';
 import 'quadrado_entrada_view.dart';
+import 'circulo_entrada_view.dart';
 import 'paralelogramo_entrada_view.dart';
 import 'losango_entrada_view.dart';
 import 'trapezio_entrada_view.dart';
@@ -15,48 +17,62 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final figuras = <String, Widget>{
+      'Retângulo': const RetanguloEntradaView(),
+      'Quadrado': const QuadradoEntradaView(),
+      'Círculo': const CirculoEntradaView(),
+      'Paralelogramo': const ParalelogramoEntradaView(),
+      'Losango': const LosangoEntradaView(),
+      'Trapézio isósceles': const TrapezioEntradaView(),
+      'Esfera': const EsferaEntradaView(),
+      'Cubo': const CuboEntradaView(),
+      'Hexágono regular': const HexagonoEntradaView(),
+      'Triângulo isósceles': const TrianguloEntradaView(),
+    };
     return Scaffold(
-      appBar: AppBar(title: const Text("Figuras Geométricas"), centerTitle: true),
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildMenuButton(context, "Retângulo", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const RetanguloEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Quadrado", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const QuadradoEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Círculo", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CirculoEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Paralelogramo", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ParalelogramoEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Losango", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LosangoEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Trapézio", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TrapezioEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Esfera", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const EsferaEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Cubo", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const CuboEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Hexágono", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const HexagonoEntradaView()))),
-              const SizedBox(height: 10),
-              _buildMenuButton(context, "Triângulo", () => Navigator.push(context, MaterialPageRoute(builder: (context) => const TrianguloEntradaView()))),
-            ],
+      appBar: AppBar(
+        title: const Text('Figuras Geométricas'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            tooltip: 'Sair',
+            icon: const Icon(Icons.logout),
+            onPressed: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute<void>(builder: (_) => const LoginScreen()),
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (final figura in figuras.entries) ...[
+                  SizedBox(
+                    width: 240,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        minimumSize: const Size.fromHeight(48),
+                      ),
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(builder: (_) => figura.value),
+                      ),
+                      child: Text(figura.key, textAlign: TextAlign.center),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildMenuButton(BuildContext context, String titulo, VoidCallback onPressed) {
-    return SizedBox(
-      width: 200,
-      height: 40,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-        onPressed: onPressed,
-        child: Text(titulo, style: const TextStyle(color: Colors.white, fontSize: 16)),
       ),
     );
   }

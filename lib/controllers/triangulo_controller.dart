@@ -1,7 +1,13 @@
+import 'dart:math';
+
 import '../models/triangulo_model.dart';
+
 class TrianguloController {
   final TrianguloModel model;
   TrianguloController(this.model);
+
+  double calcularLado() =>
+      sqrt(model.altura * model.altura + (model.base / 2) * (model.base / 2));
   double calcularArea() => (model.base * model.altura) / 2;
-  double calcularPerimetro() => model.base + (2 * model.lado);
+  double calcularPerimetro() => model.base + 2 * calcularLado();
 }

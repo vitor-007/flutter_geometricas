@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../controllers/retangulo_controller.dart';
-import '../constants/app_constants.dart';
+import 'widgets/geometria_resultado.dart';
 
 class RetanguloResultadoView extends StatelessWidget {
   final RetanguloController controller;
@@ -9,23 +10,20 @@ class RetanguloResultadoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Resultados Finais")),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Altura: ${formatDouble(controller.model.altura)}", style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 10),
-            Text("Base: ${formatDouble(controller.model.base)}", style: const TextStyle(fontSize: 18)),
-            const Divider(height: 30, thickness: 2),
-            Text("Área:\n${formatDouble(controller.calcularArea())}", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 20),
-            Text("Perímetro:\n${formatDouble(controller.calcularPerimetro())}", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          ],
+    return GeometriaResultado(
+      figura: 'Retângulo',
+      medidas: [
+        MedidaResultado('Base', controller.model.base),
+        MedidaResultado('Altura', controller.model.altura),
+      ],
+      resultados: [
+        MedidaResultado('Área', controller.calcularArea(), unidade: 'u²'),
+        MedidaResultado(
+          'Perímetro',
+          controller.calcularPerimetro(),
+          unidade: 'u',
         ),
-      ),
+      ],
     );
   }
 }

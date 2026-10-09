@@ -1,5 +1,7 @@
 import 'dart:math';
+
 import '../models/hexagono_model.dart';
+
 class HexagonoController {
   final HexagonoModel model;
   HexagonoController(this.model);

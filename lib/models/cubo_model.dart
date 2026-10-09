@@ -1,1 +1,4 @@
-class CuboModel { double aresta; CuboModel({required this.aresta}); }
+class CuboModel {
+  double aresta;
+  CuboModel({required this.aresta});
+}

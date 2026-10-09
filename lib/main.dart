@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'views/splash_screen.dart';
 
 void main() {
@@ -13,9 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Figuras Geométricas',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: const SplashScreen(),
     );
   }

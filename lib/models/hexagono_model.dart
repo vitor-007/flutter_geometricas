@@ -1,1 +1,4 @@
-class HexagonoModel { double lado; HexagonoModel({required this.lado}); }
+class HexagonoModel {
+  double lado;
+  HexagonoModel({required this.lado});
+}
