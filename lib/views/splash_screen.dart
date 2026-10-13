@@ -60,7 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
               const SizedBox(height: 10),
               const CircularProgressIndicator(),
               const SizedBox(height: 30),
-              const Text('Aluno: Vitor Reina'),
+              const Text('Alunos: Vitor Reina, Marcos Calera e Vitor Portolani'),
               const SizedBox(height: 10),
               const Text('Versão 1.0'),
             ],
