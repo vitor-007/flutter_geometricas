@@ -1,6 +1,6 @@
 # Figuras Geométricas — Flutter MVC
 
-Aplicativo acadêmico de Vitor Reina, com apresentação, login local, menu e telas
+Aplicativo acadêmico de Vitor Reina, Marcos Calera e Victor Portolani, com apresentação, login local, menu e telas
 para calcular dez figuras. O login permite entrar com usuário e senha preenchidos;
 não há autenticação em servidor nem cadastro de contas.
 
